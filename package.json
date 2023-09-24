@@ -1,0 +1,6 @@
+{
+  "name": "paperprograms",
+  "scripts": {
+    "start": "node server/entry-server.js"
+  }
+}
