@@ -2,5 +2,8 @@
   "name": "paperprograms",
   "scripts": {
     "start": "node server/entry-server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
   }
 }
