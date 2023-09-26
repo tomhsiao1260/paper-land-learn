@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        'camera': 'client/camera/entry.js'
+        'camera': 'client/camera/entry.jsx'
       },
       output: {
         dir: 'www/dist',
