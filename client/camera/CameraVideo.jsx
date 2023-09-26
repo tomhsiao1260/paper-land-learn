@@ -7,8 +7,8 @@ const videoStyle = {
   position: 'absolute',
   top: 0,
   left: 0,
-  width: '200px',
-  height: '200px',
+  width: '600px',
+  height: '400px',
   transform: 'rotateY(180deg)',
   zIndex: 1,
 }
@@ -16,31 +16,15 @@ const videoStyle = {
 const canvasStyle = {
   position: 'absolute',
   top: 0,
-  left: '200px',
-  width: '200px',
-  height: '200px',
+  left: '600px',
+  width: '600px',
+  height: '400px',
   transform: 'rotateY(180deg)',
-  backgroundColor: 'red',
+  // backgroundColor: 'red',
   zIndex: 2,
 }
 
-const defaultConfig = {
-  paperSize: 'LETTER',
-  colorsRGB: [[119, 43, 24, 255], [94, 104, 48, 255], [65, 80, 84, 255], [0, 0, 0, 255]],
-  paperDotSizes: [8, 8, 8, 8],
-  knobPoints: [{ x: 0, y: 0 }, { x: 1, y: 0 }, { x: 1, y: 1 }, { x: 0, y: 1 }],
-  showOverlayKeyPointCircles: true,
-  showOverlayKeyPointText: true,
-  showOverlayComponentLines: true,
-  showOverlayShapeId: true,
-  showOverlayProgram: true,
-  autoPrintEnabled: false,
-  freezeDetection: false,
-  showPrintedInQueue: false,
-  scaleFactor: 4,
-};
-
-function CameraVideo() {
+function CameraVideo(props) {
   const videoInput = useRef(null)
   const canvasOutput = useRef(null)
   const [ videoStart, setVideoStart ] = useState(false)
@@ -52,28 +36,25 @@ function CameraVideo() {
 
     const contraints = {}
     contraints.video = {};
-    contraints.video.width = 200
-    contraints.video.height = 200
+    contraints.video.width = 600
+    contraints.video.height = 400
 
     const stream = await navigator.mediaDevices.getUserMedia(contraints)
     videoInput.current.srcObject = stream
-    videoInput.current.width = 200
-    videoInput.current.height = 200
+    videoInput.current.width = 600
+    videoInput.current.height = 400
 
     videoInput.current.onloadedmetadata = () => {
       videoInput.current.play()
       setVideoStart(true)
     }
-
-    // const ctx = canvasOutput.current.getContext('2d')
-    // canvasOutput.current.getContext('2d', { willReadFrequently: true })
   }, [])
 
   useEffect(() => {
     if (videoStart) {
       const dataToRemember = {}
       const videoCapture = new cv.VideoCapture(videoInput.current)
-      processVideo(canvasOutput.current, videoCapture, dataToRemember, { config: defaultConfig })
+      processVideo(canvasOutput.current, videoCapture, dataToRemember, { config: props.config })
     }
   }, [videoStart])
 

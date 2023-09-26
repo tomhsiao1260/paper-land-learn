@@ -8,7 +8,8 @@ export default defineConfig({
     sourcemap: true,
     rollupOptions: {
       input: {
-        'camera': 'client/camera/entry.jsx'
+        'camera': 'client/camera/entry.jsx',
+        'projector': 'client/projector/entry.jsx',
       },
       output: {
         dir: 'www/dist',

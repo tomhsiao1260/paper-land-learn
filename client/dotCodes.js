@@ -1,4 +1,4 @@
-import shuffleSeed from 'shuffle-seed';
+import { shuffle } from 'lodash';
 import uniq from 'lodash/uniq';
 
 function permutations(n, colors, arr) {
@@ -9,9 +9,8 @@ function permutations(n, colors, arr) {
   return ret;
 }
 
-export const code8400 = shuffleSeed.shuffle(
+export const code8400 = shuffle(
   permutations(7, 4)
     .filter(colors => uniq(colors).length >= 4)
-    .map(colors => colors.join('')),
-  'someseed'
+    .map(colors => colors.join(''))
 );

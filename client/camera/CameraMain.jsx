@@ -1,10 +1,11 @@
 import CameraVideo from './CameraVideo'
 
-function CameraMain() {
+function CameraMain(props) {
   return (
     <>
-      <div>Hello Wolrd</div>
-      <CameraVideo />
+      <CameraVideo
+        config={ props.config }
+      />
     </>
   )
 }
