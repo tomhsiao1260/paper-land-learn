@@ -8,9 +8,13 @@
     "start": "npm run build && node server/entry-server.js"
   },
   "dependencies": {
+    "color-diff": "^1.4.0",
     "express": "^4.18.2",
+    "lodash": "^4.17.21",
+    "node-matrices": "^1.0.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "shuffle-seed": "^1.1.6"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
